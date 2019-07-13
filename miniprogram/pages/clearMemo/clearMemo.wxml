@@ -1,0 +1,35 @@
+<!--miniprogram/pages/clearMemo/clearMemo.wxml-->
+<scroll-view scroll-x scroll-left="{{sidebarWidth-3}}" style='height:{{viewHeight}}px;width:{{viewWidth}}px;'>
+  <view class='table-body'>
+    <view class='td'>
+      <view style="width:{{sidebarWidth}}rpx;">今天</view>
+    </view>
+    <view class='td'>
+      <view class='table-head' style="height:{{weekHeadHeight}}rpx;">
+        <block wx:for="{{weekHeads}}" wx:for-item="head" wx:key="name">
+          <view class='th' style="width:{{weekDayWidth}}px;">
+            <view style="font-size:{{weekHeadHeight-10}}rpx;">{{head.name}}</view>
+          </view>
+        </block>
+      </view>
+      <scroll-view scroll-y class='scrollClass' scroll-top='{{scrollTop}}' bindscrolltoupper='whenScrollToTop' upper-threshold="200" bindscrolltolower='whenScrollToBottom' lower-threshold="200" bindscroll='whenScroll' style="height:{{viewHeight}}px;width:{{viewWidth}}px;margin-top:-20rpx;">
+        <view class='table'>
+          <block wx:for="{{weekArray}}" wx:for-item="week" wx:key="id">
+            <view class='table-body' style="height:{{weekDayHeight}}px;">
+              <block wx:for="{{week.days}}" wx:for-item="day" wx:key="{{index}}">
+                <view class='td' style="width:{{weekDayWidth}}px;">
+                  <view class='week-day-date'>
+                    <text>{{day.date}}</text>
+                  </view>
+                  <view class='week-day-item'>
+                    <text></text>
+                  </view>
+                </view>
+              </block>
+            </view>
+          </block>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+</scroll-view>

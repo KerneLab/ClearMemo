@@ -16,9 +16,9 @@ Page({
     "weekArray": [],
     "weekHeadHeight": 40,
     "weekDayHeight": 40,
-    "weekDayWidth": 20
+    "weekDayWidth": 20,
+    "yearNumber": "xxxx"
   },
-
 
 
   /**
@@ -36,7 +36,8 @@ Page({
       "weekArray": this.getWeekArray(this.weekLeadMin, this.weekLeadMax), //获取周数组
       "weekHeadHeight": this.getWeekHeadHeight(), // 获取周的表头高度
       "weekDayHeight": this.getWeekDayHeight(), // 获取周的高度
-      "weekDayWidth": this.getWeekDayWidth() // 获取周的每天宽度
+      "weekDayWidth": this.getWeekDayWidth(), // 获取周的每天宽度
+      "yearNumber": this.weekLeadMin.format("YYYY") // 获取初始年份
     })
 
   },
@@ -159,6 +160,10 @@ Page({
     return 35
   },
 
+  getWeekLeadByRatio: function(ratio, min, max) {
+    return min.add(Math.floor(max.diff(min, 'day') * ratio), 'day')
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -218,7 +223,9 @@ Page({
   },
 
   whenScroll: function(e) {
-    //console.log(e)
+    this.setData({
+      "yearNumber": this.getWeekLeadByRatio(e.detail.scrollTop / (e.detail.scrollHeight - this.getViewHeight()), this.weekLeadMin, this.weekLeadMax).format("YYYY")
+    })
   },
 
   /**

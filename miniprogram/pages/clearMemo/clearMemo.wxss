@@ -25,7 +25,7 @@
   overflow-x: auto;
 }
 
-.table-body {
+.tr {
   display: inline-flex;
   flex-direction: row;
   width: 100%;

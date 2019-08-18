@@ -10,7 +10,7 @@
 	},
 	"appid": "wx01b12973de00ef68",
 	"projectname": "ClearMemo",
-	"libVersion": "2.2.5",
+	"libVersion": "2.0.4",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"condition": {

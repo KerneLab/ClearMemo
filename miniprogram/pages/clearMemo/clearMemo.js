@@ -40,6 +40,19 @@ Page({
       "yearNumber": this.weekLeadMin.format("YYYY") // 获取初始年份
     })
 
+    wx.cloud.callFunction({
+      // 云函数名称
+      name: 'login',
+      // 传给云函数的参数
+      data: {
+
+      },
+      success: function(res) {
+        console.log(res.result)
+      },
+      fail: console.error
+    })
+
   },
 
   getLastSunday: function(date) {
